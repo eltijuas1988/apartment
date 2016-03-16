@@ -1,0 +1,47 @@
+<div class="page-header">
+  <%= link_to new_condo_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Condo
+  <% end %>
+  <h1>Listing condos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Address</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @condos) do |condo| %>
+            <td><%= condo.latitude %></td>
+            <td><%= condo.longitude %></td>
+            <td><%= condo.address %></td>
+            <td><%= condo.name %></td>
+            <td><%= condo.contact %></td>
+            <td><%= link_to 'Show', condo %></td>
+        <td><%= link_to 'Edit', edit_condo_path(condo) %></td>
+        <td><%= link_to 'Destroy', condo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+});
+</script>

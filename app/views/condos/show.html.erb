@@ -1,0 +1,43 @@
+<div class="page-header">
+  <%= link_to condos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_condo_path(@condo), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show condo</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Latitude:</dt>
+  <dd><%= @condo.latitude %></dd>
+
+  <dt>Longitude:</dt>
+  <dd><%= @condo.longitude %></dd>
+
+  <dt>Address:</dt>
+  <dd><%= @condo.address %></dd>
+
+  <dt>Name:</dt>
+  <dd><%= @condo.name %></dd>
+
+  <dt>Contact:</dt>
+  <dd><%= @condo.contact %></dd>
+
+</dl>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+});
+</script>

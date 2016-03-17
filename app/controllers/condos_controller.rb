@@ -75,6 +75,6 @@ class CondosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def condo_params
-      params.require(:condo).permit(:latitude, :longitude, :address, :name, :contact)
+      params.require(:condo).permit(:latitude, :longitude, :address, :name, :contact, :image)
     end
 end

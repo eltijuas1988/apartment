@@ -1,6 +1,6 @@
 class CondosController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_condo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /condos
   # GET /condos.json

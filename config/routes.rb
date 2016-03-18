@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :condos
+  resources :condos, except: [:new, :create]
+  devise_for :users, controllers: { sessions: "devise/sessions" }
+    resources :users do
+      resources :condos, only: [:new, :create, :update]
+    end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

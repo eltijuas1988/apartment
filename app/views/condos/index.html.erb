@@ -1,8 +1,10 @@
 <div class="page-header">
-  <%= link_to new_condo_path, class: 'btn btn-primary' do %>
+    <%= link_to new_condo_path, class: 'btn btn-primary' do %>
+
     <span class="glyphicon glyphicon-plus"></span>
     New Condo
-  <% end %>
+    <% end %>
+
   <h1>Listing condos</h1>
 </div>
 
@@ -15,9 +17,6 @@
             <th>Address</th>
             <th>Name</th>
             <th>Contact</th>
-            <th></th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
 
@@ -36,7 +35,7 @@
   </table>
 </div>
 
-<script type="text/javascript">
+<script>
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);

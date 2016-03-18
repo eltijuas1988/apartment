@@ -21,7 +21,7 @@ class CondosController < ApplicationController
 
   # GET /condos/new
   def new
-    @condo = Condo.new
+    @condo = current_user.condos.new
   end
 
   # GET /condos/1/edit
@@ -31,7 +31,7 @@ class CondosController < ApplicationController
   # POST /condos
   # POST /condos.json
   def create
-    @condo = Condo.new(condo_params)
+    @condo = current_user.condos.new(condo_params)
 
     respond_to do |format|
       if @condo.save

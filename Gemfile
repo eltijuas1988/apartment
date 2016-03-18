@@ -25,8 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-generators'
 gem 'geocoder'
 gem 'gmaps4rails'
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git" 
-
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
